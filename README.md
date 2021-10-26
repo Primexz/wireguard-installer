@@ -33,5 +33,9 @@ The script will now install all necessary packages for Wireguard. Also already n
   - Add new Interfaces
   - Remove Interfaces
 - Tunnel Monitoring
+- Better DNS Resolver Options
+  - Custom Unbound Installer
+  - Premade DNS Server Selections
+ 
 
 
