@@ -22,7 +22,8 @@ def VirtCheck():
     CheckResult=executeSystemCommand("systemd-detect-virt")
 
     if CheckResult in utils.unsupported_virts:
-        print(f"Your virtual-enviroment: {CheckResult} is not supported by Wireguard!")
+        print(f"{utils.CColor.RED}[ERROR] Your virtual-enviroment: {CheckResult} is not supported by Wireguard!")
+        exit()
 
 def CheckOS():
     OSOut = getOS()
