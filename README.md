@@ -1,4 +1,6 @@
 # XGuard (Wireguard Server Installer)
+![visitor badge](https://visitor-badge.glitch.me/badge?page_id=Primexz.wireguard-installer)
+
 **This Python script should make the installation of a [Wireguard VPN](https://www.wireguard.com/) server as easy as possible.**
 
 Wireguard is a modern VPN protocol.
