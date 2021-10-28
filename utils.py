@@ -69,3 +69,42 @@ def MainBanner():
    print(f"""
 {CColor.MAGENTA}+=======================================================================================+{CColor.RESET}
    """)
+
+
+
+def GenerateUnboundConfig(Network, Host):
+   return f"""server:
+    verbosity: 0
+
+    interface: {Host}
+    port: 53
+    do-ip4: yes
+    do-udp: yes
+    do-tcp: yes
+
+    access-control: {Network} allow
+
+    do-ip6: yes
+
+    prefer-ip6: no
+
+    harden-glue: yes
+
+    harden-dnssec-stripped: yes
+
+    use-caps-for-id: no
+
+    edns-buffer-size: 1472
+
+    prefetch: yes
+
+    num-threads: 2
+
+    so-rcvbuf: 1m
+
+    private-address: 192.168.0.0/16
+    private-address: 169.254.0.0/16
+    private-address: 172.16.0.0/12
+    private-address: 10.0.0.0/8
+    private-address: fd00::/8
+    private-address: fe80::/10"""

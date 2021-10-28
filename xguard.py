@@ -134,6 +134,7 @@ If you don't know what to enter exactly check the documentation on the github re
 
 
 
+
     utils.MainBanner()
     FIRST_DNS=""
     while bool(re.match(utils.IPv4_Regex, FIRST_DNS)) != True:
@@ -252,7 +253,6 @@ PostDown = iptables -D FORWARD -i {MIM} -o {WGI} -j ACCEPT; iptables -D FORWARD 
 
 
 
-    
 
 
 
@@ -354,6 +354,28 @@ What do you want to do?
 
     if(RESULT == str(1)):
         NewClient()
+
+
+
+
+def InstallUnbound(Network, InterfaceIP, InterfaceName):
+    print("Installing Unbound Package..")
+    OS=CheckOS()
+    if OS == "debian":
+        os.system("apt install unbound > /dev/null")
+        with open(f"/etc/unbound/unbound.conf.d/wireguard-{InterfaceName}.conf", "w") as uconf:
+            uconf.write(utils.GenerateUnboundConfig(Network, InterfaceIP))
+    elif OS == "fedora":
+        os.system("dnf install -y unbound > /dev/null")
+        with open(f"/etc/unbound/conf.d/wireguard-{InterfaceName}.conf", "w") as uconf:
+            uconf.write(utils.GenerateUnboundConfig(Network, InterfaceIP))
+    elif OS == "centos":
+        os.system('yum -y install unbound > /dev/null')
+        with open(f"/etc/unbound/conf.d/wireguard-{InterfaceName}.conf", "w") as uconf:
+            uconf.write(utils.GenerateUnboundConfig(Network, InterfaceIP))
+    elif OS == "arch":
+        os.system('pacman -S --needed --noconfirm unbound > /dev/null')
+
 
 
 
